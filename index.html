@@ -35,11 +35,9 @@
         },
 
         errorPlacement: function(error, element) {
-            if(element.attr("name")=="field1")
-                $('#email').append(error.text());
 
-            if(element.attr("name")=="field2")
-                $('#contact').append(error.text());
+            error.appendTo("#email");
+       
         },
 
         submitHandler: function (form) { // for demo
@@ -51,7 +49,7 @@
     });
     </script>
     <style>
-         input.error { border: 1px solid red; }
+         input.error { border: 5px solid red; }
     </style>
 </body>
 </html>
