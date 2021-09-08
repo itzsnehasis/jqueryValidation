@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.7.2.min.js" integrity="sha256-R7aNzoy2gFrVs+pNJ6+SokH04ppcEqJ0yFLkNGoFALQ=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+    <!-- importing Validation js plugin -->
+    <title>Validation</title>
+</head>
+<body>
+    <form id="myform">
+        <input type="text" name="field1" />&nbsp;<span id="email" name="email" style="color: red;"></span>
+        <br/>
+        <input type="text" name="field2" />&nbsp;<span id="contact" name="contact" style="color: red;"></span>
+        <br/>
+        <input type="submit" />
+
+        
+    </form>
+<script>
+    $(document).ready(function () {
+    
+    $('#myform').validate({ // initialize the plugin
+        rules: {
+            field1: {
+                required: true,
+                email: true
+            },
+            field2: {
+                required: true,
+                minlength: 5
+            }
+        },
+
+        errorPlacement: function(error, element) {
+            if(element.attr("name")=="field1")
+                $('#email').append(error.text());
+
+            if(element.attr("name")=="field2")
+                $('#contact').append(error.text());
+        },
+
+        submitHandler: function (form) { // for demo
+            alert('valid form submitted'); // for demo
+            return false; // for demo
+        }
+    });
+    
+    });
+    </script>
+    <style>
+         input.error { border: 1px solid red; }
+    </style>
+</body>
+</html>
